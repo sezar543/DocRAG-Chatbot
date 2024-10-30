@@ -1,0 +1,28 @@
+FROM postgres:16
+
+# Install dependencies, including git and clang
+RUN apt-get update && apt-get install -y \
+    postgresql-server-dev-16 \
+    build-essential \
+    git \
+    clang \
+    && git clone https://github.com/pgvector/pgvector.git \
+    && cd pgvector && make && make install \
+    && apt-get remove -y postgresql-server-dev-16 build-essential git clang \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/* /pgvector
+
+
+# # Copy the initialization script to the special entrypoint directory
+# COPY init_db.sh /docker-entrypoint-initdb.d/init_db.sh
+COPY init_db.sh /docker-entrypoint-initdb.d/
+
+# Make the script executable
+RUN chmod +x /docker-entrypoint-initdb.d/init_db.sh
+
+# Setting up the correct ownership and permissions for the data directory
+RUN mkdir -p /var/lib/postgresql/data/pgdata && \
+    chown -R postgres:postgres /var/lib/postgresql/data/pgdata
+
+# Expose the PostgreSQL port
+EXPOSE 5432

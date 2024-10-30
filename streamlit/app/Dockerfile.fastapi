@@ -1,0 +1,49 @@
+FROM nvidia/cuda:11.8.0-runtime-ubuntu20.04
+
+WORKDIR /app
+
+# Set environment variables to avoid interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
+# Install Python, pip, and necessary dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    python3.9 \
+    python3.9-venv \
+    python3.9-dev \
+    python3-pip \
+    tzdata \
+    postgresql-client \
+    netcat-openbsd \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set Python 3.9 as the default python3
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1
+
+# Ensure pip is up-to-date
+RUN python3 -m pip install --upgrade pip
+
+# Set environment variables for the model cache directory
+ENV TRANSFORMERS_CACHE=/models
+
+# Copy application files
+COPY . .
+
+# Install Python dependencies
+RUN python3 -m pip install --no-cache-dir --timeout=1000 -r requirements.txt
+
+# Copy the wait-for-it script
+COPY wait-for-it.sh /app/wait-for-it.sh
+RUN chmod +x /app/wait-for-it.sh
+
+EXPOSE 8000
+
+# Copy the CUDA test script
+COPY cuda_test.py .
+
+CMD ["uvicorn", "fastapi_app:app", "--host", "0.0.0.0", "--port", "8000"]
+
+# Command to run the CUDA test script (optional, for verification)
+CMD ["python3", "cuda_test.py"]

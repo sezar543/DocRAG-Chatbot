@@ -1,0 +1,344 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.37kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.11-slim
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 66B done
+#3 DONE 0.0s
+
+#4 [1/5] FROM docker.io/library/python:3.11-slim@sha256:fc39d2e68b554c3f0a5cb8a776280c0b3d73b4c04b83dbade835e2a171ca27ef
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 642B done
+#5 DONE 0.0s
+
+#6 [2/5] WORKDIR /app
+#6 CACHED
+
+#7 [3/5] RUN apt-get update && apt-get install -y     build-essential     curl     software-properties-common     git     && rm -rf /var/lib/apt/lists/*
+#7 CACHED
+
+#8 [4/5] COPY . .
+#8 DONE 0.0s
+
+#9 [5/5] RUN pip3 install -r requirements.txt
+#9 2.147 Looking in indexes: https://pypi.org/simple, https://download.pytorch.org/whl/cu118
+#9 2.338 Collecting accelerate==0.29.2 (from -r requirements.txt (line 1))
+#9 2.379   Downloading accelerate-0.29.2-py3-none-any.whl.metadata (18 kB)
+#9 2.444 Collecting bitsandbytes==0.43.1 (from -r requirements.txt (line 2))
+#9 2.448   Downloading bitsandbytes-0.43.1-py3-none-manylinux_2_24_x86_64.whl.metadata (2.2 kB)
+#9 2.502 Collecting einops==0.7.0 (from -r requirements.txt (line 3))
+#9 2.506   Downloading einops-0.7.0-py3-none-any.whl.metadata (13 kB)
+#9 2.601 Collecting huggingface-hub==0.22.2 (from -r requirements.txt (line 4))
+#9 2.605   Downloading huggingface_hub-0.22.2-py3-none-any.whl.metadata (12 kB)
+#9 2.685 Collecting ipywidgets==8.1.2 (from -r requirements.txt (line 5))
+#9 2.690   Downloading ipywidgets-8.1.2-py3-none-any.whl.metadata (2.4 kB)
+#9 2.868 Collecting langchain==0.1.16 (from -r requirements.txt (line 6))
+#9 2.872   Downloading langchain-0.1.16-py3-none-any.whl.metadata (13 kB)
+#9 2.940 Collecting langchain-community==0.0.32 (from -r requirements.txt (line 7))
+#9 2.944   Downloading langchain_community-0.0.32-py3-none-any.whl.metadata (8.5 kB)
+#9 3.031 Collecting langchain-core==0.1.42 (from -r requirements.txt (line 8))
+#9 3.035   Downloading langchain_core-0.1.42-py3-none-any.whl.metadata (5.9 kB)
+#9 3.072 Collecting langchain-postgres==0.0.3 (from -r requirements.txt (line 9))
+#9 3.076   Downloading langchain_postgres-0.0.3-py3-none-any.whl.metadata (5.2 kB)
+#9 3.157 Collecting langchain-text-splitters==0.0.1 (from -r requirements.txt (line 10))
+#9 3.162   Downloading langchain_text_splitters-0.0.1-py3-none-any.whl.metadata (2.0 kB)
+#9 3.299 Collecting langgraph==0.0.32 (from -r requirements.txt (line 11))
+#9 3.303   Downloading langgraph-0.0.32-py3-none-any.whl.metadata (44 kB)
+#9 3.314      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.8/44.8 kB 4.3 MB/s eta 0:00:00
+#9 3.438 Collecting langsmith==0.1.45 (from -r requirements.txt (line 12))
+#9 3.444   Downloading langsmith-0.1.45-py3-none-any.whl.metadata (13 kB)
+#9 3.708 Collecting numpy==1.26.4 (from -r requirements.txt (line 13))
+#9 3.711   Downloading numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+#9 3.719      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.0/61.0 kB 8.3 MB/s eta 0:00:00
+#9 3.903 Collecting pandas==2.2.2 (from -r requirements.txt (line 14))
+#9 3.906   Downloading pandas-2.2.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (19 kB)
+#9 3.962 Collecting pgvector==0.2.5 (from -r requirements.txt (line 15))
+#9 3.967   Downloading pgvector-0.2.5-py2.py3-none-any.whl.metadata (9.9 kB)
+#9 4.029 Collecting psycopg==3.1.18 (from -r requirements.txt (line 16))
+#9 4.035   Downloading psycopg-3.1.18-py3-none-any.whl.metadata (4.2 kB)
+#9 4.212 Collecting psycopg-binary==3.1.18 (from -r requirements.txt (line 17))
+#9 4.217   Downloading psycopg_binary-3.1.18-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.8 kB)
+#9 4.275 Collecting psycopg-pool==3.2.1 (from -r requirements.txt (line 18))
+#9 4.279   Downloading psycopg_pool-3.2.1-py3-none-any.whl.metadata (2.6 kB)
+#9 4.378 Collecting psycopg2-binary==2.9.9 (from -r requirements.txt (line 19))
+#9 4.382   Downloading psycopg2_binary-2.9.9-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.4 kB)
+#9 4.503 Collecting pyarrow==15.0.2 (from -r requirements.txt (line 20))
+#9 4.508   Downloading pyarrow-15.0.2-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (3.0 kB)
+#9 4.559 Collecting pypdf==4.2.0 (from -r requirements.txt (line 21))
+#9 4.564   Downloading pypdf-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+#9 4.621 Collecting python-dotenv==1.0.1 (from -r requirements.txt (line 22))
+#9 4.628   Downloading python_dotenv-1.0.1-py3-none-any.whl.metadata (23 kB)
+#9 4.812 Collecting safetensors==0.4.2 (from -r requirements.txt (line 23))
+#9 4.816   Downloading safetensors-0.4.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.8 kB)
+#9 4.893 Collecting sentence-transformers==2.7.0 (from -r requirements.txt (line 24))
+#9 4.900   Downloading sentence_transformers-2.7.0-py3-none-any.whl.metadata (11 kB)
+#9 5.235 Collecting SQLAlchemy==2.0.29 (from -r requirements.txt (line 25))
+#9 5.239   Downloading SQLAlchemy-2.0.29-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.6 kB)
+#9 5.325 Collecting streamlit==1.33.0 (from -r requirements.txt (line 26))
+#9 5.330   Downloading streamlit-1.33.0-py2.py3-none-any.whl.metadata (8.5 kB)
+#9 5.549 Collecting tokenizers==0.15.2 (from -r requirements.txt (line 27))
+#9 5.553   Downloading tokenizers-0.15.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+#9 5.746 Collecting tqdm==4.66.2 (from -r requirements.txt (line 28))
+#9 5.750   Downloading tqdm-4.66.2-py3-none-any.whl.metadata (57 kB)
+#9 5.758      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.6/57.6 kB 7.2 MB/s eta 0:00:00
+#9 5.852 Collecting transformers==4.39.3 (from -r requirements.txt (line 29))
+#9 5.859   Downloading transformers-4.39.3-py3-none-any.whl.metadata (134 kB)
+#9 5.868      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.8/134.8 kB 18.7 MB/s eta 0:00:00
+#9 5.965 Collecting torch (from -r requirements.txt (line 34))
+#9 5.973   Downloading https://download.pytorch.org/whl/cu118/torch-2.3.0%2Bcu118-cp311-cp311-linux_x86_64.whl (839.7 MB)
+#9 19.41      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 839.7/839.7 MB 1.2 MB/s eta 0:00:00
+#9 22.04 Collecting torchvision (from -r requirements.txt (line 35))
+#9 22.04   Downloading https://download.pytorch.org/whl/cu118/torchvision-0.18.0%2Bcu118-cp311-cp311-linux_x86_64.whl (6.3 MB)
+#9 22.13      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 70.3 MB/s eta 0:00:00
+#9 22.29 Collecting torchaudio (from -r requirements.txt (line 36))
+#9 22.30   Downloading https://download.pytorch.org/whl/cu118/torchaudio-2.3.0%2Bcu118-cp311-cp311-linux_x86_64.whl (3.3 MB)
+#9 22.33      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 106.0 MB/s eta 0:00:00
+#9 22.45 Collecting packaging>=20.0 (from accelerate==0.29.2->-r requirements.txt (line 1))
+#9 22.45   Downloading packaging-24.0-py3-none-any.whl.metadata (3.2 kB)
+#9 22.58 Collecting psutil (from accelerate==0.29.2->-r requirements.txt (line 1))
+#9 22.58   Downloading psutil-5.9.8-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (21 kB)
+#9 22.66 Collecting pyyaml (from accelerate==0.29.2->-r requirements.txt (line 1))
+#9 22.67   Downloading PyYAML-6.0.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+#9 22.80 Collecting filelock (from huggingface-hub==0.22.2->-r requirements.txt (line 4))
+#9 22.80   Downloading filelock-3.14.0-py3-none-any.whl.metadata (2.8 kB)
+#9 22.88 Collecting fsspec>=2023.5.0 (from huggingface-hub==0.22.2->-r requirements.txt (line 4))
+#9 22.88   Downloading fsspec-2024.5.0-py3-none-any.whl.metadata (11 kB)
+#9 22.97 Collecting requests (from huggingface-hub==0.22.2->-r requirements.txt (line 4))
+#9 22.98   Downloading requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
+#9 23.14 Collecting typing-extensions>=3.7.4.3 (from huggingface-hub==0.22.2->-r requirements.txt (line 4))
+#9 23.15   Downloading typing_extensions-4.12.1-py3-none-any.whl.metadata (3.0 kB)
+#9 23.21 Collecting comm>=0.1.3 (from ipywidgets==8.1.2->-r requirements.txt (line 5))
+#9 23.21   Downloading comm-0.2.2-py3-none-any.whl.metadata (3.7 kB)
+#9 23.34 Collecting ipython>=6.1.0 (from ipywidgets==8.1.2->-r requirements.txt (line 5))
+#9 23.35   Downloading ipython-8.25.0-py3-none-any.whl.metadata (4.9 kB)
+#9 23.42 Collecting traitlets>=4.3.1 (from ipywidgets==8.1.2->-r requirements.txt (line 5))
+#9 23.42   Downloading traitlets-5.14.3-py3-none-any.whl.metadata (10 kB)
+#9 23.48 Collecting widgetsnbextension~=4.0.10 (from ipywidgets==8.1.2->-r requirements.txt (line 5))
+#9 23.49   Downloading widgetsnbextension-4.0.11-py3-none-any.whl.metadata (1.6 kB)
+#9 23.54 Collecting jupyterlab-widgets~=3.0.10 (from ipywidgets==8.1.2->-r requirements.txt (line 5))
+#9 23.55   Downloading jupyterlab_widgets-3.0.11-py3-none-any.whl.metadata (4.1 kB)
+#9 23.97 Collecting aiohttp<4.0.0,>=3.8.3 (from langchain==0.1.16->-r requirements.txt (line 6))
+#9 23.98   Downloading aiohttp-3.9.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.5 kB)
+#9 24.14 Collecting dataclasses-json<0.7,>=0.5.7 (from langchain==0.1.16->-r requirements.txt (line 6))
+#9 24.14   Downloading dataclasses_json-0.6.6-py3-none-any.whl.metadata (25 kB)
+#9 24.42 Collecting jsonpatch<2.0,>=1.33 (from langchain==0.1.16->-r requirements.txt (line 6))
+#9 24.42   Downloading jsonpatch-1.33-py2.py3-none-any.whl.metadata (3.0 kB)
+#9 24.85 Collecting pydantic<3,>=1 (from langchain==0.1.16->-r requirements.txt (line 6))
+#9 24.86   Downloading pydantic-2.7.2-py3-none-any.whl.metadata (108 kB)
+#9 24.96      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.5/108.5 kB 1.0 MB/s eta 0:00:00
+#9 25.11 Collecting tenacity<9.0.0,>=8.1.0 (from langchain==0.1.16->-r requirements.txt (line 6))
+#9 25.12   Downloading tenacity-8.3.0-py3-none-any.whl.metadata (1.2 kB)
+#9 25.38 Collecting packaging>=20.0 (from accelerate==0.29.2->-r requirements.txt (line 1))
+#9 25.38   Downloading packaging-23.2-py3-none-any.whl.metadata (3.2 kB)
+#9 26.05 Collecting orjson<4.0.0,>=3.9.14 (from langsmith==0.1.45->-r requirements.txt (line 12))
+#9 26.05   Downloading orjson-3.10.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (49 kB)
+#9 26.15      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 49.7/49.7 kB 389.4 kB/s eta 0:00:00
+#9 26.39 Collecting python-dateutil>=2.8.2 (from pandas==2.2.2->-r requirements.txt (line 14))
+#9 26.40   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+#9 26.75 Collecting pytz>=2020.1 (from pandas==2.2.2->-r requirements.txt (line 14))
+#9 26.75   Downloading pytz-2024.1-py2.py3-none-any.whl.metadata (22 kB)
+#9 27.08 Collecting tzdata>=2022.7 (from pandas==2.2.2->-r requirements.txt (line 14))
+#9 27.09   Downloading tzdata-2024.1-py2.py3-none-any.whl.metadata (1.4 kB)
+#9 27.49 Collecting scikit-learn (from sentence-transformers==2.7.0->-r requirements.txt (line 24))
+#9 27.49   Downloading scikit_learn-1.5.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+#9 27.65 Collecting scipy (from sentence-transformers==2.7.0->-r requirements.txt (line 24))
+#9 27.66   Downloading scipy-1.13.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+#9 27.66      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.6/60.6 kB 8.2 MB/s eta 0:00:00
+#9 27.92 Collecting Pillow (from sentence-transformers==2.7.0->-r requirements.txt (line 24))
+#9 27.92   Downloading pillow-10.3.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (9.2 kB)
+#9 28.28 Collecting greenlet!=0.4.17 (from SQLAlchemy==2.0.29->-r requirements.txt (line 25))
+#9 28.29   Downloading greenlet-3.0.3-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+#9 28.37 Collecting altair<6,>=4.0 (from streamlit==1.33.0->-r requirements.txt (line 26))
+#9 28.38   Downloading altair-5.3.0-py3-none-any.whl.metadata (9.2 kB)
+#9 28.46 Collecting blinker<2,>=1.0.0 (from streamlit==1.33.0->-r requirements.txt (line 26))
+#9 28.46   Downloading blinker-1.8.2-py3-none-any.whl.metadata (1.6 kB)
+#9 28.53 Collecting cachetools<6,>=4.0 (from streamlit==1.33.0->-r requirements.txt (line 26))
+#9 28.55   Downloading cachetools-5.3.3-py3-none-any.whl.metadata (5.3 kB)
+#9 28.61 Collecting click<9,>=7.0 (from streamlit==1.33.0->-r requirements.txt (line 26))
+#9 28.62   Downloading click-8.1.7-py3-none-any.whl.metadata (3.0 kB)
+#9 28.87 Collecting protobuf<5,>=3.20 (from streamlit==1.33.0->-r requirements.txt (line 26))
+#9 28.87   Downloading protobuf-4.25.3-cp37-abi3-manylinux2014_x86_64.whl.metadata (541 bytes)
+#9 29.01 Collecting rich<14,>=10.14.0 (from streamlit==1.33.0->-r requirements.txt (line 26))
+#9 29.01   Downloading rich-13.7.1-py3-none-any.whl.metadata (18 kB)
+#9 29.05 Collecting toml<2,>=0.10.1 (from streamlit==1.33.0->-r requirements.txt (line 26))
+#9 29.05   Downloading toml-0.10.2-py2.py3-none-any.whl.metadata (7.1 kB)
+#9 29.14 Collecting gitpython!=3.1.19,<4,>=3.0.7 (from streamlit==1.33.0->-r requirements.txt (line 26))
+#9 29.15   Downloading GitPython-3.1.43-py3-none-any.whl.metadata (13 kB)
+#9 29.21 Collecting pydeck<1,>=0.8.0b4 (from streamlit==1.33.0->-r requirements.txt (line 26))
+#9 29.21   Downloading pydeck-0.9.1-py2.py3-none-any.whl.metadata (4.1 kB)
+#9 29.30 Collecting tornado<7,>=6.0.3 (from streamlit==1.33.0->-r requirements.txt (line 26))
+#9 29.31   Downloading tornado-6.4-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.5 kB)
+#9 29.40 Collecting watchdog>=2.1.5 (from streamlit==1.33.0->-r requirements.txt (line 26))
+#9 29.40   Downloading watchdog-4.0.1-py3-none-manylinux2014_x86_64.whl.metadata (37 kB)
+#9 30.25 Collecting regex!=2019.12.17 (from transformers==4.39.3->-r requirements.txt (line 29))
+#9 30.26   Downloading regex-2024.5.15-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (40 kB)
+#9 30.27      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.9/40.9 kB 4.8 MB/s eta 0:00:00
+#9 30.39 Collecting sympy (from torch->-r requirements.txt (line 34))
+#9 30.40   Downloading sympy-1.12.1-py3-none-any.whl.metadata (12 kB)
+#9 30.47 Collecting networkx (from torch->-r requirements.txt (line 34))
+#9 30.47   Downloading networkx-3.3-py3-none-any.whl.metadata (5.1 kB)
+#9 30.54 Collecting jinja2 (from torch->-r requirements.txt (line 34))
+#9 30.54   Downloading jinja2-3.1.4-py3-none-any.whl.metadata (2.6 kB)
+#9 30.60 Collecting nvidia-cuda-nvrtc-cu11==11.8.89 (from torch->-r requirements.txt (line 34))
+#9 30.61   Downloading https://download.pytorch.org/whl/cu118/nvidia_cuda_nvrtc_cu11-11.8.89-py3-none-manylinux1_x86_64.whl (23.2 MB)
+#9 30.82      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.2/23.2 MB 76.9 MB/s eta 0:00:00
+#9 30.94 Collecting nvidia-cuda-runtime-cu11==11.8.89 (from torch->-r requirements.txt (line 34))
+#9 30.95   Downloading https://download.pytorch.org/whl/cu118/nvidia_cuda_runtime_cu11-11.8.89-py3-none-manylinux1_x86_64.whl (875 kB)
+#9 30.96      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 875.6/875.6 kB 64.6 MB/s eta 0:00:00
+#9 31.01 Collecting nvidia-cuda-cupti-cu11==11.8.87 (from torch->-r requirements.txt (line 34))
+#9 31.01   Downloading https://download.pytorch.org/whl/cu118/nvidia_cuda_cupti_cu11-11.8.87-py3-none-manylinux1_x86_64.whl (13.1 MB)
+#9 31.14      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.1/13.1 MB 98.3 MB/s eta 0:00:00
+#9 31.24 Collecting nvidia-cudnn-cu11==8.7.0.84 (from torch->-r requirements.txt (line 34))
+#9 31.25   Downloading https://download.pytorch.org/whl/cu118/nvidia_cudnn_cu11-8.7.0.84-py3-none-manylinux1_x86_64.whl (728.5 MB)
+#9 42.84      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 728.5/728.5 MB 1.4 MB/s eta 0:00:00
+#9 45.00 Collecting nvidia-cublas-cu11==11.11.3.6 (from torch->-r requirements.txt (line 34))
+#9 45.01   Downloading https://download.pytorch.org/whl/cu118/nvidia_cublas_cu11-11.11.3.6-py3-none-manylinux1_x86_64.whl (417.9 MB)
+#9 52.26      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 417.9/417.9 MB 2.1 MB/s eta 0:00:00
+#9 53.52 Collecting nvidia-cufft-cu11==10.9.0.58 (from torch->-r requirements.txt (line 34))
+#9 53.53   Downloading https://download.pytorch.org/whl/cu118/nvidia_cufft_cu11-10.9.0.58-py3-none-manylinux1_x86_64.whl (168.4 MB)
+#9 60.46      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 168.4/168.4 MB 1.7 MB/s eta 0:00:00
+#9 61.00 Collecting nvidia-curand-cu11==10.3.0.86 (from torch->-r requirements.txt (line 34))
+#9 61.01   Downloading https://download.pytorch.org/whl/cu118/nvidia_curand_cu11-10.3.0.86-py3-none-manylinux1_x86_64.whl (58.1 MB)
+#9 61.57      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.1/58.1 MB 40.5 MB/s eta 0:00:00
+#9 61.81 Collecting nvidia-cusolver-cu11==11.4.1.48 (from torch->-r requirements.txt (line 34))
+#9 61.81   Downloading https://download.pytorch.org/whl/cu118/nvidia_cusolver_cu11-11.4.1.48-py3-none-manylinux1_x86_64.whl (128.2 MB)
+#9 62.99      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 128.2/128.2 MB 23.0 MB/s eta 0:00:00
+#9 63.41 Collecting nvidia-cusparse-cu11==11.7.5.86 (from torch->-r requirements.txt (line 34))
+#9 63.42   Downloading https://download.pytorch.org/whl/cu118/nvidia_cusparse_cu11-11.7.5.86-py3-none-manylinux1_x86_64.whl (204.1 MB)
+#9 69.04      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 204.1/204.1 MB 4.1 MB/s eta 0:00:00
+#9 69.68 Collecting nvidia-nccl-cu11==2.20.5 (from torch->-r requirements.txt (line 34))
+#9 69.69   Downloading https://download.pytorch.org/whl/cu118/nvidia_nccl_cu11-2.20.5-py3-none-manylinux2014_x86_64.whl (142.9 MB)
+#9 71.10      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━      125.7/142.9 MB 25.7 MB/s eta 0:00:01
+#9 71.12 ERROR: Exception:
+#9 71.12 Traceback (most recent call last):
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 438, in _error_catcher
+#9 71.12     yield
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 561, in read
+#9 71.12     data = self._fp_read(amt) if not fp_closed else b""
+#9 71.12            ^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 527, in _fp_read
+#9 71.12     return self._fp.read(amt) if amt is not None else self._fp.read()
+#9 71.12            ^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/cachecontrol/filewrapper.py", line 102, in read
+#9 71.12     self.__buf.write(data)
+#9 71.12   File "/usr/local/lib/python3.11/tempfile.py", line 500, in func_wrapper
+#9 71.12     return func(*args, **kwargs)
+#9 71.12            ^^^^^^^^^^^^^^^^^^^^^
+#9 71.12 OSError: [Errno 28] No space left on device
+#9 71.12 
+#9 71.12 During handling of the above exception, another exception occurred:
+#9 71.12 
+#9 71.12 Traceback (most recent call last):
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/base_command.py", line 180, in exc_logging_wrapper
+#9 71.12     status = run_func(*args)
+#9 71.12              ^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/req_command.py", line 245, in wrapper
+#9 71.12     return func(self, options, args)
+#9 71.12            ^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/commands/install.py", line 377, in run
+#9 71.12     requirement_set = resolver.resolve(
+#9 71.12                       ^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/resolver.py", line 95, in resolve
+#9 71.12     result = self._result = resolver.resolve(
+#9 71.12                             ^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 546, in resolve
+#9 71.12     state = resolution.resolve(requirements, max_rounds=max_rounds)
+#9 71.12             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 427, in resolve
+#9 71.12     failure_causes = self._attempt_to_pin_criterion(name)
+#9 71.12                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 239, in _attempt_to_pin_criterion
+#9 71.12     criteria = self._get_updated_criteria(candidate)
+#9 71.12                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 230, in _get_updated_criteria
+#9 71.12     self._add_to_criteria(criteria, requirement, parent=candidate)
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 173, in _add_to_criteria
+#9 71.12     if not criterion.candidates:
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/structs.py", line 156, in __bool__
+#9 71.12     return bool(self._sequence)
+#9 71.12            ^^^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py", line 155, in __bool__
+#9 71.12     return any(self)
+#9 71.12            ^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py", line 143, in <genexpr>
+#9 71.12     return (c for c in iterator if id(c) not in self._incompatible_ids)
+#9 71.12            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py", line 47, in _iter_built
+#9 71.12     candidate = func()
+#9 71.12                 ^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/factory.py", line 182, in _make_candidate_from_link
+#9 71.12     base: Optional[BaseCandidate] = self._make_base_candidate_from_link(
+#9 71.12                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/factory.py", line 228, in _make_base_candidate_from_link
+#9 71.12     self._link_candidate_cache[link] = LinkCandidate(
+#9 71.12                                        ^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 290, in __init__
+#9 71.12     super().__init__(
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 156, in __init__
+#9 71.12     self.dist = self._prepare()
+#9 71.12                 ^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 222, in _prepare
+#9 71.12     dist = self._prepare_distribution()
+#9 71.12            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 301, in _prepare_distribution
+#9 71.12     return preparer.prepare_linked_requirement(self._ireq, parallel_builds=True)
+#9 71.12            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 525, in prepare_linked_requirement
+#9 71.12     return self._prepare_linked_requirement(req, parallel_builds)
+#9 71.12            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 596, in _prepare_linked_requirement
+#9 71.12     local_file = unpack_url(
+#9 71.12                  ^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 168, in unpack_url
+#9 71.12     file = get_http_url(
+#9 71.12            ^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 109, in get_http_url
+#9 71.12     from_path, content_type = download(link, temp_dir.path)
+#9 71.12                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/network/download.py", line 147, in __call__
+#9 71.12     for chunk in chunks:
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/progress_bars.py", line 53, in _rich_progress_bar
+#9 71.12     for chunk in iterable:
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_internal/network/utils.py", line 63, in response_chunks
+#9 71.12     for chunk in response.raw.stream(
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 622, in stream
+#9 71.12     data = self.read(amt=amt, decode_content=decode_content)
+#9 71.12            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 560, in read
+#9 71.12     with self._error_catcher():
+#9 71.12   File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+#9 71.12     self.gen.throw(typ, value, traceback)
+#9 71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 455, in _error_catcher
+#9 71.12     raise ProtocolError("Connection broken: %r" % e, e)
+#9 71.12 pip._vendor.urllib3.exceptions.ProtocolError: ("Connection broken: OSError(28, 'No space left on device')", OSError(28, 'No space left on device'))
+#9 71.17 WARNING: There was an error checking the latest version of pip.
+#9 ERROR: process "/bin/sh -c pip3 install -r requirements.txt" did not complete successfully: exit code: 2
+------
+ > [5/5] RUN pip3 install -r requirements.txt:
+71.12     data = self.read(amt=amt, decode_content=decode_content)
+71.12            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 560, in read
+71.12     with self._error_catcher():
+71.12   File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+71.12     self.gen.throw(typ, value, traceback)
+71.12   File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 455, in _error_catcher
+71.12     raise ProtocolError("Connection broken: %r" % e, e)
+71.12 pip._vendor.urllib3.exceptions.ProtocolError: ("Connection broken: OSError(28, 'No space left on device')", OSError(28, 'No space left on device'))
+71.17 WARNING: There was an error checking the latest version of pip.
+------
+Dockerfile:19
+--------------------
+  17 |     
+  18 |     # Install Python packages
+  19 | >>> RUN pip3 install -r requirements.txt
+  20 |     
+  21 |     # Expose the required ports
+--------------------
+ERROR: failed to solve: process "/bin/sh -c pip3 install -r requirements.txt" did not complete successfully: exit code: 2
