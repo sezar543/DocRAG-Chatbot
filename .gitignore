@@ -1,8 +1,12 @@
-# Ignore all .log files
-*.log
-
 
 # Ignore a specific directory
 
 /home/ubuntu/uae-chatbot/erming/streamlit/app/models
 /home/ubuntu/uae-chatbot/erming/streamlit/app/uploaded_files
+
+# Ignore Python virtual environments
+venv/
+
+# Ignore temporary files
+*.log
+*.tmp
