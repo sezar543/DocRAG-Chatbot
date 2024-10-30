@@ -1,8 +1,16 @@
 
-# Ignore a specific directory
+# Ignore model and lock files
+streamlit/app/models/
+streamlit/app/models/.locks/
+streamlit/app/models/.no_exist/
 
-/home/ubuntu/uae-chatbot/erming/streamlit/app/models
-/home/ubuntu/uae-chatbot/erming/streamlit/app/uploaded_files
+# Ignore compiled Python files
+streamlit/app/__pycache__/
+
+# Ignore other temporary files
+streamlit/app/cuda-keyring_1.1-1_all.deb*
+streamlit/app/error_log.txt
+
 
 # Ignore Python virtual environments
 venv/
