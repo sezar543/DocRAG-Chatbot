@@ -1,0 +1,40 @@
+accelerate==0.29.2
+bitsandbytes==0.43.1
+einops==0.7.0
+fastapi==0.111.0
+fastapi-cache2==0.2.1  #added
+huggingface-hub>=0.22.2
+ipywidgets==8.1.2
+langchain==0.1.16
+langchain-community==0.0.32
+langchain-core==0.1.42
+langchain-postgres==0.0.3
+langchain-text-splitters==0.0.1
+langgraph==0.0.32
+langsmith==0.1.45
+numpy==1.26.4
+pandas==2.2.2
+pgvector==0.2.5
+psycopg==3.1.18
+psycopg-binary==3.1.18
+psycopg-pool==3.2.1
+psycopg2-binary==2.9.9
+pyarrow==15.0.2
+pypdf==4.2.0
+python-dotenv==1.0.1
+safetensors==0.4.2
+sentence-transformers==2.7.0
+SQLAlchemy==2.0.29
+streamlit==1.33.0
+tokenizers==0.19.1
+tqdm==4.66.2
+transformers==4.41.2
+uvicorn==0.29.0
+websockets==12.0
+## If GPU use following link
+--extra-index-url https://download.pytorch.org/whl/cu118
+## If CPU only change to following link
+# --extra-index-url https://download.pytorch.org/whl/cpu
+torch
+torchvision
+torchaudio
