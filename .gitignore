@@ -1,4 +1,3 @@
-
 # Ignore model and lock files
 streamlit/app/models/
 streamlit/app/models/.locks/
@@ -11,10 +10,18 @@ streamlit/app/__pycache__/
 streamlit/app/cuda-keyring_1.1-1_all.deb*
 streamlit/app/error_log.txt
 
-
 # Ignore Python virtual environments
 venv/
+
+# Ignore .env
+.env
 
 # Ignore temporary files
 *.log
 *.tmp
+
+# Ignore Miscellaneous folder
+Miscellaneous/
+
+# Ignore uploaded_files folder
+\streamlit\app\uploaded_files

@@ -1,6 +1,7 @@
 import os
 import glob
 import re
+from datetime import time
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_core.documents.base import Document
@@ -11,17 +12,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 from sqlalchemy.exc import OperationalError
 
-# import logging
-# logging.basicConfig(level=logging.INFO)
-
-# from transformers import logging as transformers_logging
-# transformers_logging.set_verbosity_info()
-
 load_dotenv()
-
-# CACHE_DIR = os.path.normpath(
-#     os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
-# )
 
 # Use os.getenv to retrieve TRANSFORMERS_CACHE environment variable
 CACHE_DIR = os.getenv("TRANSFORMERS_CACHE", None)
@@ -32,8 +23,6 @@ if CACHE_DIR is None:
         os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
     )
 
-# model_name = "sentence-transformers/all-MiniLM-L12-v2"
-# model_encoder = "sentence-transformers/all-mpnet-base-v2"
 model_name = os.getenv("model_encoder")
 
 
@@ -64,16 +53,6 @@ class Encoder:
         device = data.get('device', 'cpu')
         return Encoder(model_name=model_name, device=device)
         
-    # def check_cache(self):
-    #     # Path to cached model files
-    #     cache_model_dir = os.path.join(CACHE_DIR, self.model_name.replace('/', '_'))
-    #     cached_files = glob.glob(os.path.join(cache_model_dir, "*"))
-        
-    #     if cached_files:
-    #         print(f"Model files found in cache: {cached_files}")
-    #     else:
-    #         print("Model files not found in cache. Model will be downloaded.")        
-
 class PGVectorDb:
     def __init__(self, docs, embedding_function, session_id):
         postgres_user = os.getenv("POSTGRES_USER")
@@ -88,11 +67,11 @@ class PGVectorDb:
         # POSTGRES_HOST = os.getenv("POSTGRES_HOST", "postgres")
         # POSTGRES_PORT = os.getenv("POSTGRES_PORT", "5432")
 
-        print(f"POSTGRES_USER: {postgres_user}")
-        print(f"POSTGRES_PASS: {postgres_pass}")
-        print(f"POSTGRES_DB: {postgres_database}")
-        print(f"POSTGRES_HOST: {postgres_host}")
-        print(f"POSTGRES_PORT: {postgres_port}")
+        # print(f"POSTGRES_USER: {postgres_user}")
+        # print(f"POSTGRES_PASS: {postgres_pass}")
+        # print(f"POSTGRES_DB: {postgres_database}")
+        # print(f"POSTGRES_HOST: {postgres_host}")
+        # print(f"POSTGRES_PORT: {postgres_port}")
 
         if not postgres_pass or not postgres_host or not postgres_port:
             raise ValueError("Database configuration is incomplete. Please set the required environment variables.")
@@ -101,12 +80,12 @@ class PGVectorDb:
 
         try:
             # First attempt with port included in connection string
-            print("First attempt! CONNECTION_STRING is ")
+            # print("First attempt! CONNECTION_STRING is ")
             CONNECTION_STRING = f"postgresql+psycopg2://{postgres_user}:{postgres_pass}@{postgres_host}:{postgres_port}/{postgres_database}"
-            print(CONNECTION_STRING)
+            # print(CONNECTION_STRING)
             postgres_host = 'localhost:5432'
             CONNECTION_STRING = f"postgresql+psycopg2://{postgres_user}:{postgres_pass}@{postgres_host}/{postgres_database}"
-            print("CONNECTION_STRING2 = ", CONNECTION_STRING )
+            # print("CONNECTION_STRING2 = ", CONNECTION_STRING )
             self.db = PGVector.from_documents(
                 embedding=embedding_function, 
                 documents=docs, 
@@ -116,7 +95,7 @@ class PGVectorDb:
                 pre_delete_collection=True,
             )
         except OperationalError as e1:
-            print(f"First attempt failed: {e1}")
+            # print(f"First attempt failed: {e1}")
             time.sleep(5)  # Wait for 5 seconds before the second attempt
             try:
                 # Fallback attempt without port
@@ -160,28 +139,6 @@ class PGVectorDb:
         except Exception as e:
             print(f"Error deleting collection {COLLECTION_NAME}: {e}")
 
-
-# # Mock implementation of PGVector for completeness
-# class PGVector:
-#     def __init__(self):
-#         self.collections = {}
-
-#     def from_documents(self, embedding, documents, collection_name, connection_string, use_jsonb, pre_delete_collection):
-#         if pre_delete_collection and collection_name in self.collections:
-#             del self.collections[collection_name]
-#         self.collections[collection_name] = documents
-#         return self
-
-#     def similarity_search(self, question, k):
-#         # Implement similarity search logic
-#         pass
-
-#     def drop_collection(self, collection_name):
-#         if collection_name in self.collections:
-#             del self.collections[collection_name]
-#         else:
-#             raise ValueError(f"Collection {collection_name} does not exist.")
-
 def load_and_split_pdfs(file_paths: list, chunk_size: int = 1024):
     for file_path in file_paths:
         if not Path(file_path).exists():
@@ -200,7 +157,7 @@ def load_and_split_pdfs(file_paths: list, chunk_size: int = 1024):
     
     text_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(
         tokenizer=AutoTokenizer.from_pretrained(
-            "sentence-transformers/all-MiniLM-L12-v2"
+            "model_encoder"
         ),
         chunk_size=chunk_size,
         chunk_overlap=int(chunk_size / 10),

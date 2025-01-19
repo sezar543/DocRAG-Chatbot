@@ -23,13 +23,6 @@ from transformers import AutoTokenizer
 from shared_memory import get_memory, reset_memory
 import logging
 
-
-# import logging
-# logging.basicConfig(level=logging.INFO)
-
-# from transformers import logging as transformers_logging
-# transformers_logging.set_verbosity_info()
-
 load_dotenv()
 
 ACCESS_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN") # reads .env file with HUGGINGFACEHUB_API_TOKEN=<your hugging face access token>
@@ -40,13 +33,6 @@ if not LLM_model_id:
     raise ValueError("The LLM_MODEL_ID environment variable is not set.")
 print(f"model.py Loading model with ID: {LLM_model_id}")
 
-# model_encoder = os.getenv("model_encoder")
-
-# memory = ConversationBufferWindowMemory(k=3) # memory_key="chat_history",input_key="human_input", human_prefix="Human",ai_prefix="AI Assistant",
-
-# CACHE_DIR = os.path.normpath(
-#     os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
-# )
 
 # Use os.getenv to retrieve TRANSFORMERS_CACHE environment variable
 CACHE_DIR = os.getenv("TRANSFORMERS_CACHE", None)
@@ -135,58 +121,6 @@ class ChatModel:
                 self.reset_memory(user_id, k)
         return {"status": "memory_reset" if memory_reset_trigger else "memory_checked"}
 
-
-    # def ensure_model_in_cache(self):
-    #     # Check if model files are already cached
-    #     cache_model_dir = os.path.join(CACHE_DIR, f"models--{self.LLM_model_id.replace('/', '--')}")
-    #     cached_files = glob.glob(os.path.join(cache_model_dir, "*"))
-    #     print(f"Cache directory: {cache_model_dir}")
-    #     print(f"Cached files: {cached_files}")
-
-    #     if not cached_files:
-    #         print("Model files not found in cache. Downloading model.")
-    #         hf_hub_download(
-    #             repo_id=self.LLM_model_id,
-    #             filename="pytorch_model.bin",
-    #             cache_dir=CACHE_DIR,
-    #             token=self.access_token
-    #         )
-    #         hf_hub_download(
-    #             repo_id=self.LLM_model_id,
-    #             filename="config.json",
-    #             cache_dir=CACHE_DIR,
-    #             token=self.access_token
-    #         )
-    #         hf_hub_download(
-    #             repo_id=self.LLM_model_id,
-    #             filename="tokenizer_config.json",
-    #             cache_dir=CACHE_DIR,
-    #             token=self.access_token
-    #         )
-    #         hf_hub_download(
-    #             repo_id=self.LLM_model_id,
-    #             filename="vocab.txt",
-    #             cache_dir=CACHE_DIR,
-    #             token=self.access_token
-    #         )
-    #         # Add any additional files needed for your model
-    #     else:
-    #         print(f"Model files found in cache: {cached_files}")
-
-
-    # def check_cache(self):
-    #     # Path to cached model files
-    #     cache_model_dir = os.path.join(CACHE_DIR, self.LLM_model_id.replace('/', '_'))
-    #     cached_files = glob.glob(os.path.join(cache_model_dir, "*"))
-
-    #     print(f"Cache directory: {cache_model_dir}")
-    #     print(f"Cached files: {cached_files}")
-
-    #     if cached_files:
-    #         print(f"Model files found in cache: {cached_files}")
-    #     else:
-    #         print("Model files not found in cache. Model will be downloaded.")
-
     async def generate(self, user_id: str, question: str, db=None, context: str = None, max_new_tokens: int = 250, temperature: float = 0.01, max_length: int = 1200, k: int = 3, ):
         self.generate_text = pipeline(
             "text-generation",
@@ -239,61 +173,4 @@ Answer:"""
             response = qa.invoke({"query":question})
             response = response["result"].split('Answer: ')[-1].strip()
 
-#             contextualize_q_system_prompt = """Given a chat history and the latest user question \
-# which might reference context in the chat history, formulate a standalone question \
-# which can be understood without the chat history. Do NOT answer the question, \
-# just reformulate it if needed and otherwise return it as is."""
-#             contextualize_q_prompt = ChatPromptTemplate.from_messages(
-#                 [
-#                     ("system", contextualize_q_system_prompt),
-#                     MessagesPlaceholder("chat_history"),
-#                     ("human", "{input}"),
-#                 ]
-#             )
-#             history_aware_retriever = create_history_aware_retriever(
-#                 self.llm, db.as_retriever(search_kwargs={"k": k,"search_type": "similarity"}), contextualize_q_prompt
-#             )
-
-#             qa_system_prompt = """You are an assistant for question-answering tasks. \
-# Use the following pieces of retrieved context to answer the question. \
-# If you don't know the answer, just say that you don't know. \
-# Use three sentences maximum and keep the answer concise.\
-
-# {context}"""
-#             qa_prompt = ChatPromptTemplate.from_messages(
-#                 [
-#                     ("system", qa_system_prompt),
-#                     MessagesPlaceholder("chat_history"),
-#                     ("human", "{input}"),
-#                 ]
-#             )
-
-
-#             question_answer_chain = create_stuff_documents_chain(self.llm, qa_prompt)
-
-#             rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
-
-#             store = {}
-
-
-#             def get_session_history(session_id: str) -> BaseChatMessageHistory:
-#                 if session_id not in store:
-#                     store[session_id] = ChatMessageHistory()
-#                 return store[session_id]
-
-
-#             conversational_rag_chain = RunnableWithMessageHistory(
-#                 rag_chain,
-#                 get_session_history,
-#                 input_messages_key="input",
-#                 history_messages_key="chat_history",
-#                 output_messages_key="answer",
-#             )
-#             response = conversational_rag_chain.invoke(
-#                 {"input": question},
-#                 config={
-#                     "configurable": {"session_id": "abc123"}
-#                 },  # constructs a key "abc123" in `store`.
-#             )
-            # response = response["answer"].split('Assistant: ')[-1].strip()
         return response

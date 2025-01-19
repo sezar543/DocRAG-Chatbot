@@ -45,5 +45,5 @@ COPY cuda_test.py .
 
 CMD ["uvicorn", "fastapi_app:app", "--host", "0.0.0.0", "--port", "8000"]
 
-# Command to run the CUDA test script (optional, for verification)
-CMD ["python3", "cuda_test.py"]
+# # Command to run the CUDA test script (optional, for verification)
+# CMD ["python3", "cuda_test.py"]
