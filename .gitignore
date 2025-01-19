@@ -20,8 +20,5 @@ venv/
 *.log
 *.tmp
 
-# Ignore Miscellaneous folder
-Miscellaneous/
-
 # Ignore uploaded_files folder
 \streamlit\app\uploaded_files
