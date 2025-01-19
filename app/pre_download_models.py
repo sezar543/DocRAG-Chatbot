@@ -9,8 +9,6 @@ load_dotenv()
 
 ACCESS_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
-ACCESS_TOKEN = "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"
-
 model_encoder = os.getenv("model_encoder")
 LLM_model_id = os.getenv("LLM_model_id")
 
