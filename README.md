@@ -18,7 +18,7 @@ This project is a **document-aware chatbot application** that combines **Streaml
 ## Project Structure Diagram
 The following diagram illustrates the architecture and flow of the project:
 
-![Project Structure](Miscellaneous/diagram.png)
+![Project Structure](miscellaneous/diagram.png)
 
 ## Prerequisites
 Ensure the following tools are installed:
