@@ -14,7 +14,7 @@ streamlit/app/error_log.txt
 venv/
 
 # Ignore .env
-.env
+*.env
 
 # Ignore temporary files
 *.log
